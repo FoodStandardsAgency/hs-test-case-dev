@@ -1,0 +1,13 @@
+﻿function,name,access,rss,api,url,subjectstring,done
+backlog,Web of science,manual one-off bulk download,,,https://apps.webofknowledge.com,,yes
+backlog,ScienceOpen,manual one-off bulk download,,,https://www.scienceopen.com/,,yes
+scraper,google scholar email alert,email alert,,,,microbiome - new results,yes
+scraper,pubmed email alert,email alert,,,,What's new for 'microbiome,yes
+scraper,ScienceDirect alert,email alert,,,,,
+scraper,PLoS database,API call,,http://api.plos.org/ (via rplos package),,,yes
+scraper,Gut,email alert (BMJ),,,,,yes
+scraper,Scientific Reports,email alert (Nature),,,,,
+scraper,Journal of Agricultural and Food Chemistry,email alert (ACS),,,,Journal of Agricultural and Food Chemistry,yes
+scraper,Cell,email alert (Cell),,,,Cell,yes
+scraper,Microbiome,email alert (BMC),,,,New Articles From Microbiome,yes
+scraper,Science,email alert,,,,,

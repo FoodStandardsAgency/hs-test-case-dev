@@ -1,0 +1,46 @@
+.skin-green .main-header .logo {
+          font-family: Arial;
+          background-color: #338c74;
+         }
+.skin-green .main-header .navbar {
+          font-family: Arial;
+          background-color: #99c5b9;
+         } 
+
+.skin-green .main-sidebar {
+         font-family: Arial;
+         padding-top:100px;
+         background-color: #006F51;
+        }
+        
+.skin-green .main-sidebar .sidebar .sidebar-menu .active a {
+         background-color: #6CB33F;
+        }
+        
+ .content-wrapper, .right-side { 
+        background-color: white;
+        overflow-x: hidden; 
+        }  
+        
+.shiny-output-error-validation {
+        color: red;
+      }        
+
+.well {
+ background-color: white; 
+ border-color: #a7d18c;
+}
+
+.irs-single, .irs-bar-edge, .irs-bar, .irs-from, .irs-to  {
+  background: #338c74;
+  border-top: #338c74;
+  border-bottom: #338c74;
+}
+
+h3 {
+  font-family: Arial;
+}
+
+.nav-tabs-custom .nav-tabs li.active {
+     border-top-color: #006F51;
+}

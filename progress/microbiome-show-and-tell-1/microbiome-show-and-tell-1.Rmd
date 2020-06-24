@@ -1,0 +1,451 @@
+---
+title: "Publication Analysis Tool: Show and Tell 1"
+output:
+  xaringan::moon_reader:
+    css: ["datastory-theme.css","datastory-fonts.css"]
+    seal: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(lubridate)
+library(tidytext)
+library(wordcloud)
+library(kableExtra)
+
+set.seed(123)
+```
+
+class:center,middle, inverse
+background-image: url("fsa-title-image.jpg")
+background-size: cover
+
+### Publication Analysis Tool: Show and Tell 1
+
+<div class="bottomright">30/01/2020<br></div>
+
+---
+
+### Agenda
+
+1. Problem and objective
+
+2. Features of the proposed tool
+
+3. Data sources
+
+4. Metrics
+
+5. Next steps
+
+<div class="bottom-right-logo"></div>
+---
+
+### Problem and objective
+
+**Question:** what are the trends in research and media coverage with respect to 
+the human microbiome - and what do these suggest about how this issue will evolve 
+over the next 5-10 years? 
+
+The aim is to build a tool to summarise these trends, to inform the new horizon 
+scanning process.
+
+The microbiome is being used here as a test case - it is hoped that the tool 
+could be extended to other topics of interest in the future. 
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Features of the proposed tool
+
+**1. Fetch and store metadata about relevant articles**
+
+* Research backlog - what has been happening in this area over the last 5-10 years?
+
+* Ongoing monitoring - regular updates of new research in this area
+
+* Automated updating
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Features of the proposed tool
+
+**2. Create useful metrics**
+
+* Volume of research - is this a growing/fading issue, prominence of sub-categories 
+
+* Who is producing this research and what themes/topics can be identified
+
+* Presence of key entities – companies, places, researchers, products 
+
+* Distinguishing between medical and food related research 
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Features of the proposed tool
+
+**3. Deliver results to the user**
+
+* User-friendly dashboard that can be understood by users across the agency 
+
+* Visualizes the metrics with interactive filtering options
+
+* Returns list of references relevant to identified trends 
+
+* Timeline showing when trends change or emerge to help project into the future 
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Data sources
+
+* Databases: PLoS, Pubmed, Web of Science
+
+* Specific Journals: *Gut*, *Journal of Agricultural and Food Chemistry*, 
+*Microbiome*, *Cell*, *Scientific Reports*
+
+* Specialist media: *Science* Magazine, *Men's Health*, *Women's Health*, the
+ *New Scientist*, *BBC Science Focus*, science sections of major newspapers
+
+* One-off backlog + ongoing monitoring (periodic searches, email alerts, RSS feeds, Twitter feeds)
+
+--- 
+
+---
+
+### Data sources
+
+```{r}
+knitr::include_graphics("flow-diagram.jpg")
+```
+
+
+
+---
+
+### Search terms
+
+"Gut microbiome"
+
+"Gut flora"
+
+"Gut microbes"
+
+"Human gastrointestinal microbiota"
+
+"Gut metagenome"
+
+"Gut protozoa"
+
+"Faecal transplantation"
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Database fields
+
+```{r}
+xml2::read_html("https://github.com/FoodStandardsAgency/hs-test-case-dev/blob/master/data/academic-article-fields.csv") %>% 
+  rvest::html_nodes("table") %>% 
+  rvest::html_table() %>% 
+  .[[1]] %>% 
+  as_tibble() %>% 
+  select(field = X2, description = X3) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE, font_size = 12) 
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+```{r}
+
+# load data, exclusion words and functions
+
+ac <- read_csv("../../data/academic.csv")
+
+source("../../metrics/clean-data.R")
+
+ac <- cleanac(ac)
+
+topicwords <- readLines("../../data/topicwords.txt", warn = FALSE) %>% str_split(., ",") %>% unlist() %>% trimws()
+studywords <- readLines("../../data/studywords.txt", warn = FALSE) %>% str_split(., ",") %>% unlist() %>% trimws()
+
+source("../../metrics/metric-functions.R")
+```
+
+Number of publications over time
+
+```{r fig.retina=3, fig.height=6}
+ac %>%
+  group_by(published, monitoring) %>%
+  summarise(`number of articles` = n()) %>%
+  filter(!is.na(published)) %>%
+  ggplot(aes(x = published, y = `number of articles`, color = monitoring)) + geom_line()
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+.pull-left[
+Words in titles
+
+```{r out.width = "400px"}
+makeWordCloud(getWordCount(ac, title))
+```
+]
+
+.pull-left[
+Words in abstracts
+
+```{r out.width = "400px"}
+makeWordCloud(getWordCount(ac, abstract))
+```
+]
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+Where is the research happening?
+
+```{r}
+ac %>%
+  select(affiliation) %>%
+  filter(!is.na(affiliation)) %>%
+  filter(grepl("\\[", affiliation)) %>%
+  mutate(affiliation = trimws(str_remove_all(affiliation, "(\\[[A-z',;\\.\\-\\(\\) ]+\\])"))) %>%
+  mutate(affiliation = str_split(affiliation, ";")) %>%
+  unnest(cols = affiliation) %>%
+  mutate(affiliation = trimws(affiliation)) %>%
+  count(affiliation) %>%
+  arrange(desc(n)) %>% 
+  rename(`publication count` = n) %>%
+  slice(1:10) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE, font_size = 12) 
+```
+
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+Where is the research being published?
+
+```{r}
+ac %>%
+  select(container) %>%
+  filter(!is.na(container)) %>%
+  mutate(container = str_to_title(container)) %>%
+  count(container) %>%
+  arrange(desc(n)) %>% 
+  rename(`publication count` = n) %>%
+  slice(1:10) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE, font_size = 12)
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+In which disciplines/research areas is this work happening?
+
+```{r}
+ac %>%
+  select(researcharea) %>%
+  filter(!is.na(researcharea)) %>%
+  mutate(researcharea = str_split(researcharea, ";")) %>%
+  unnest(cols = researcharea) %>%
+  count(researcharea) %>%
+  arrange(desc(n)) %>% 
+  rename(`publication count` = n) %>%
+  slice(1:10) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE, font_size = 12)
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+Who are the top funders in this area?
+
+```{r}
+ac %>%
+  select(funder) %>%
+  filter(!is.na(funder)) %>%
+  mutate(funder = str_split(funder, ";")) %>%
+  unnest(cols = funder) %>%
+  mutate(funder = trimws(str_to_title(funder))) %>%
+  count(funder) %>%
+  arrange(desc(n)) %>% 
+  rename(`publication count` = n) %>%
+  slice(1:10) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = FALSE, font_size = 12)
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Metrics
+
+Data coverage
+
+```{r fig.retina=3, fig.height=6}
+missper <- map(names(ac), countmiss, data = ac) %>%
+  unlist()
+tibble(variable = names(ac), `percentage missing` = missper) %>% 
+  filter(variable != "keywords" & variable != "volume" & variable!= "issue" & variable != "doi" & variable != "monitoring") %>% 
+  ggplot(aes(fct_reorder(factor(variable), `percentage missing`), `percentage missing`)) + geom_col() + coord_flip() + xlab("")
+```
+
+<div class="bottom-right-logo"></div>
+---
+
+### Next steps: Interactivity
+
+* Turning static diagrams into an interactive dashboard 
+
+* Filtering options - areas of interest, disciplines - or exclude certain terms
+
+* Giving the user the ability to focus in on particular sub-topics and understand 
+where they sit in the broader literature
+
+<div class="bottom-right-logo"></div>
+
+---
+
+### Next steps: Data acquisition
+
+* More sources - further database searches
+* Relevancy filtering and exclusion terms
+* Improved full text retrieval
+* Media content - copyright a significant barrier here
+* Automation
+* Storage
+
+<div class="bottom-right-logo"></div>
+---
+
+### Next steps: Text processing
+
+* Beyond counting words: natural language processing
+
+* Treating different spellings and related words as the same thing to get a more 
+accurate measure of the prevalence/salience of different topics and entities 
+in this body of work.
+
+* Entity recognition - products, people, places (challenging!)
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Next steps: Text processing
+
+Effects of part-of-speech tagging and lemmatisation (title word frequency)
+
+.pull-left[
+Simple word count
+```{r out.width = "400px"}
+makeWordCloud(getWordCount(ac, title))
+```
+]
+
+--
+
+.pull-right[
+```{r include=FALSE}
+library(reticulate)
+py_discover_config()
+use_condaenv("nlp-env")
+source_python('../../metrics/nlp-functions.py')
+```
+Additional text processing
+```{r out.width = "400px"}
+# get lemma versions of exclusion words (using function defined in python)
+studylemmas <- get_lemmas(studywords) %>% unlist() %>% unique()
+topiclemmas <- get_lemmas(topicwords) %>% unlist() %>% unique()
+
+# tokenise and get attributes of desired field
+# get rid of stopwords, non-alphanumeric characters and very short (1-2 character) words
+# filter out lemmas in exclusion sets
+# change proper nouns (PROPN) to noun (NOUN) because does not make meaningful distinction
+
+makeLemmaCloud(getLemmaCount(ac, title))
+```
+]
+
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### Next steps: Text processing
+
+Effects of part-of-speech tagging and lemmatisation (title word frequency)
+
+.pull-left[
+All words
+```{r out.width = "400px"}
+makeLemmaCloud(getLemmaCount(ac, title))
+```
+]
+
+.pull-right[
+Nouns only
+```{r out.width = "400px"}
+makeLemmaCloud(getLemmaCount(ac, title), adjective = FALSE, verb = FALSE)
+```
+]
+
+
+<div class="bottom-right-logo"></div>
+---
+
+
+### Next steps
+
+Aim to have a working prototype by end of March, although we will be demonstrating 
+work in progress at the next Horizon Scanning community of interest meeting (24/2/2020).
+
+In the longer term, we want to consider:
+* Extending the tool to other research areas
+* Exploring synergy with other requirements of those who consume research
+
+
+<div class="bottom-right-logo"></div>
+---
+
+### We want to hear from you!
+
+Do you think you would use this or a similar tool? 
+
+datascience@food.gov.uk
+
+https://github.com/FoodStandardsAgency/hs-test-case-dev
+
+
+
+

@@ -1,0 +1,15 @@
+
+
+body { 
+  font-family: Arial, helvetica, sans-serif; 
+  line-height: 1.5;
+}
+h1, h2, h3 {
+  font-family: Arial;
+  color: #0080b1;
+  border-top-style: dotted;
+  border-width: 5px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.remark-code, .remark-inline-code { font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace; }

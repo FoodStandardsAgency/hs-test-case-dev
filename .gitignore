@@ -1,0 +1,14 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+working/
+
+etl/data/emails
+
+python/model/
+
+*.tar.gz
+
+config.yml

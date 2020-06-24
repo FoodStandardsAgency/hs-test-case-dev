@@ -1,0 +1,13 @@
+name: hstestcase_dev
+title: hstestcase_dev
+username:
+account: foodstandards
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1980418
+bundleId: 2911956
+url: https://foodstandards.shinyapps.io/hstestcase_dev/
+when: 1584957059.34336
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rprofile|data-raw/exwords.R|data-raw/studywords.txt|data-raw/topicwords.txt|data-raw/uilist.rds|dev/01_start.R|dev/02_dev.R|dev/03_deploy.R|dev/run_dev.R|tests/testthat.R|tests/testthat/test-app.R|tests/testthat/test-golem-recommended.R|tests/testthat/test-retrieve.R|tests/testthat/test-searches.R|progress|python|test-cases|working

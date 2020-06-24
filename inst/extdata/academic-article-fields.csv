@@ -1,0 +1,15 @@
+﻿doi,DOI
+title,document title
+published,"publication date (if multiple are given, e.g. electronic and print, the earliest date)"
+container,"container title (e.g. journal name, book name)"
+volume,container volume
+issue,container issue
+pubtype,"publication type (e.g. journal article, book chapter, conference publication)"
+author,document authors
+affiliation,author affiliations
+keywords,document keywords (WOS only - used to suggest keywords but not as a metric)
+researcharea,subject (crossref) / research area (web of science)
+abstract,document abstract
+funder,document funder
+compint,author competing interests
+body,article body

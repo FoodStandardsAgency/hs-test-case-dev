@@ -1,0 +1,48 @@
+Package: hstestcase
+Title: Publication analysis tool
+Version: 0.0.0.9000
+Authors@R: person('Helen', 'Graham', email = 'helen.graham@food.gov.uk', role = c('cre', 'aut'))
+Description: Tool to explore articles pertaining to the microbiome.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.5)
+Imports: 
+    shiny,
+    golem,
+    processx,
+    attempt,
+    DT,
+    glue,
+    htmltools,
+    dplyr,
+    ggplot2,
+    purrr,
+    wordcloud,
+    shinyWidgets,
+    shinycssloaders,
+    shinydashboard,
+    RColorBrewer,
+    assertthat,
+    lubridate,
+    readr,
+    reticulate,
+    stringr,
+    tidyr,
+    magrittr,
+    pkgload,
+    pool,
+    DBI,
+    fulltext,
+    httr,
+    odbc,
+    pubchunks,
+    rcrossref,
+    rvest,
+    tibble,
+    xml2,
+    config
+RoxygenNote: 7.0.2
+Suggests: 
+    testthat (>= 2.1.0)

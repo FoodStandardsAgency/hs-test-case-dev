@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Publication Analysis Tool: Show and Tell 1</title>
+    <meta charset="utf-8" />
+    <script src="microbiome-show-and-tell-1_files/kePrint-0.0.1/kePrint.js"></script>
+    <link rel="stylesheet" href="datastory-theme.css" type="text/css" />
+    <link rel="stylesheet" href="datastory-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class:center,middle, inverse
+background-image: url("fsa-title-image.jpg")
+background-size: cover
+
+### Publication Analysis Tool: Show and Tell 1
+
+&lt;div class="bottomright"&gt;30/01/2020&lt;br&gt;&lt;/div&gt;
+
+---
+
+### Agenda
+
+1. Problem and objective
+
+2. Features of the proposed tool
+
+3. Data sources
+
+4. Metrics
+
+5. Next steps
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Problem and objective
+
+**Question:** what are the trends in research and media coverage with respect to 
+the human microbiome - and what do these suggest about how this issue will evolve 
+over the next 5-10 years? 
+
+The aim is to build a tool to summarise these trends, to inform the new horizon 
+scanning process.
+
+The microbiome is being used here as a test case - it is hoped that the tool 
+could be extended to other topics of interest in the future. 
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Features of the proposed tool
+
+**1. Fetch and store metadata about relevant articles**
+
+* Research backlog - what has been happening in this area over the last 5-10 years?
+
+* Ongoing monitoring - regular updates of new research in this area
+
+* Automated updating
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Features of the proposed tool
+
+**2. Create useful metrics**
+
+* Volume of research - is this a growing/fading issue, prominence of sub-categories 
+
+* Who is producing this research and what themes/topics can be identified
+
+* Presence of key entities – companies, places, researchers, products 
+
+* Distinguishing between medical and food related research 
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Features of the proposed tool
+
+**3. Deliver results to the user**
+
+* User-friendly dashboard that can be understood by users across the agency 
+
+* Visualizes the metrics with interactive filtering options
+
+* Returns list of references relevant to identified trends 
+
+* Timeline showing when trends change or emerge to help project into the future 
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Data sources
+
+* Databases: PLoS, Pubmed, Web of Science
+
+* Specific Journals: *Gut*, *Journal of Agricultural and Food Chemistry*, 
+*Microbiome*, *Cell*, *Scientific Reports*
+
+* Specialist media: *Science* Magazine, *Men's Health*, *Women's Health*, the
+ *New Scientist*, *BBC Science Focus*, science sections of major newspapers
+
+* One-off backlog + ongoing monitoring (periodic searches, email alerts, RSS feeds, Twitter feeds)
+
+--- 
+
+---
+
+### Data sources
+
+&lt;img src="flow-diagram.jpg" width="13653" /&gt;
+
+
+
+---
+
+### Search terms
+
+"Gut microbiome"
+
+"Gut flora"
+
+"Gut microbes"
+
+"Human gastrointestinal microbiota"
+
+"Gut metagenome"
+
+"Gut protozoa"
+
+"Faecal transplantation"
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Database fields
+
+&lt;table class="table table-striped" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; field &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; description &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; doi &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; DOI &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; title &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; document title &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pubdate &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; publication date (if multiple are given, e.g. electronic and print, the earliest date) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; container &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; container title (e.g. journal name, book name) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; volume &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; container volume &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; issue &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; container issue &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; pubtype &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; publication type (e.g. journal article, book chapter, conference publication) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; author &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; document authors &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; affiliation &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; author affiliations &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; keywords &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; document keywords (WOS only - used to suggest keywords but not as a metric) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; researcharea &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; subject (crossref) / research area (web of science) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; abstract &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; document abstract &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; funder &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; document funder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; compint &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; author competing interests &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; body &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; article body &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+
+
+Number of publications over time
+
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-4-1.png" width="504" /&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+.pull-left[
+Words in titles
+
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-5-1.png" width="400px" /&gt;
+]
+
+.pull-left[
+Words in abstracts
+
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-6-1.png" width="400px" /&gt;
+]
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+Where is the research happening?
+
+&lt;table class="table table-striped" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; affiliation &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; publication count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Coll Cork, Dept Psychiat &amp;amp; Neurobehav Sci, Cork, Ireland &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Coll Cork, Dept Anat &amp;amp; Neurosci, Cork, Ireland &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Emory Univ, Nell Hodgson Woodruff Sch Nursing, Atlanta, GA 30322 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Oklahoma, Dept Anthropol, Norman, OK 73019 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; McMaster Univ, Dept Psychiat &amp;amp; Behav Neurosci, Hamilton, ON, Canada &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Calif San Diego, Ctr Microbiome Innovat, La Jolla, CA 92093 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Black Dog Inst, Sydney, NSW, Australia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Arkansas Med Sci, Dept Pediat, Little Rock, AR 72205 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Calif San Diego, Dept Comp Sci &amp;amp; Engn, La Jolla, CA 92093 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Univ Calif San Diego, Dept Pediat, La Jolla, CA 92093 USA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+Where is the research being published?
+
+&lt;table class="table table-striped" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; container &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; publication count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Plos One &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 146 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Microbiome &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 121 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Frontiers In Microbiology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 77 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Scientific Reports &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Nature &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 29 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Genome Biology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Nutrients &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 24 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Msystems &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Nature Communications &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gut &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+In which disciplines/research areas is this work happening?
+
+&lt;table class="table table-striped" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; researcharea &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; publication count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Microbiology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 135 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; General Medicine &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 132 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; General Biochemistry &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 130 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Genetics and Molecular Biology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 129 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Psychiatry &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 109 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; General Agricultural and Biological Sciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 96 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Genetics &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 82 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Neurosciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 78 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Biology and life sciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 65 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Immunology &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+Who are the top funders in this area?
+
+&lt;table class="table table-striped" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; funder &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; publication count &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Institutes Of Health &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Natural Science Foundation Of China &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Science Foundation &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Institute Of Allergy And Infectious Diseases &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 31 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Institute Of Diabetes And Digestive And Kidney Diseases &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Institute Of General Medical Sciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 21 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Science Foundation Ireland &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Wellcome Trust &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Cancer Institute &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; National Institute Of Environmental Health Sciences &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Metrics
+
+Data coverage
+
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-11-1.png" width="504" /&gt;
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Next steps: Interactivity
+
+* Turning static diagrams into an interactive dashboard 
+
+* Filtering options - areas of interest, disciplines - or exclude certain terms
+
+* Giving the user the ability to focus in on particular sub-topics and understand 
+where they sit in the broader literature
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+
+---
+
+### Next steps: Data acquisition
+
+* More sources - further database searches
+* Relevancy filtering and exclusion terms
+* Improved full text retrieval
+* Media content - copyright a significant barrier here
+* Automation
+* Storage
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Next steps: Text processing
+
+* Beyond counting words: natural language processing
+
+* Treating different spellings and related words as the same thing to get a more 
+accurate measure of the prevalence/salience of different topics and entities 
+in this body of work.
+
+* Entity recognition - products, people, places (challenging!)
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Next steps: Text processing
+
+Effects of part-of-speech tagging and lemmatisation (title word frequency)
+
+.pull-left[
+Simple word count
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-12-1.png" width="400px" /&gt;
+]
+
+--
+
+.pull-right[
+
+Additional text processing
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-14-1.png" width="400px" /&gt;
+]
+
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### Next steps: Text processing
+
+Effects of part-of-speech tagging and lemmatisation (title word frequency)
+
+.pull-left[
+All words
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-15-1.png" width="400px" /&gt;
+]
+
+.pull-right[
+Nouns only
+&lt;img src="microbiome-show-and-tell-1_files/figure-html/unnamed-chunk-16-1.png" width="400px" /&gt;
+]
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+
+### Next steps
+
+Aim to have a working prototype by end of March, although we will be demonstrating 
+work in progress at the next Horizon Scanning community of interest meeting (24/2/2020).
+
+In the longer term, we want to consider:
+* Extending the tool to other research areas
+* Exploring synergy with other requirements of those who consume research
+
+
+&lt;div class="bottom-right-logo"&gt;&lt;/div&gt;
+---
+
+### We want to hear from you!
+
+Do you think you would use this or a similar tool? 
+
+datascience@food.gov.uk
+
+https://github.com/FoodStandardsAgency/hs-test-case-dev
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
