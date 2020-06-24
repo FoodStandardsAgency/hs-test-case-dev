@@ -12,8 +12,8 @@ The dashboard is deployed at https://foodstandards.shinyapps.io/hstestcase/
 
 ## Developing the dashboard
 
-* The dashboard was built in R 3.6.2 and RStudio 1.2, using the {{golem}} framework
-* Package dependencies (R and Python) are captured using {{renv}}, which stores 
+* The dashboard was built in R 3.6.2 and RStudio 1.2, using the {golem} framework
+* Package dependencies (R and Python) are captured using {renv}, which stores 
 the required R packages in a project-specific library, and the python 
 requirements in *environment.yaml*. To restore the library, run `renv::restore()`
 
@@ -56,6 +56,9 @@ chosen sub-trend) over time
 in the title/abstract
 * *mod_toplist.R* displays the top authors/journals/funders/research areas/author 
 affiliations and *mod_tables.R* is a paginated table with all of these in order
+
+to run the app, you will need the config.yaml file with the database credentials - 
+this is not pushed to git!
 
 ### Other things
 
