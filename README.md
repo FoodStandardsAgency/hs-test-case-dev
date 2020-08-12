@@ -44,6 +44,10 @@ from word counts because they are generic terms such as 'conclusion' or 'abstrac
 
 ### The Shiny app and its modules
 
+to run the app, you will need the config.yaml file with the database credentials - 
+this is not pushed to git! If you are running the app locally you will also 
+need to be connected to Forticlient.
+
 the interface and server functions are separated into *app_ui.R* and *app_server.R*
 
 most functionality is contained within modules:
@@ -56,9 +60,6 @@ chosen sub-trend) over time
 in the title/abstract
 * *mod_toplist.R* displays the top authors/journals/funders/research areas/author 
 affiliations and *mod_tables.R* is a paginated table with all of these in order
-
-to run the app, you will need the config.yaml file with the database credentials - 
-this is not pushed to git!
 
 ### Other things
 
